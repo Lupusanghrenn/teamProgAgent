@@ -39,12 +39,14 @@ Recoit message de Explorer Ennemy Base --> Tire sur la base ennemi
 ### Base
 
 message de ping pour compter les troupes à intervalle régulier.
+
 gestion du recrutement des troupes en fonctions des unités manquantes entre autres
 
 
 ### Heavy + light
 
 protection des zones de nourriture à leur apparition.
+
 attaque des ennemis a proximité
 
 
@@ -54,12 +56,17 @@ attaque des ennemis a proximité
 ### Role de recolte
 
 Explorer food
+
 Engineer
+
 (Light or Heavy)
 
 ### Role d'attaque
 
 Explorer Ennemy base
+
 Heavy
+
 Light
+
 Rocket Launcher
