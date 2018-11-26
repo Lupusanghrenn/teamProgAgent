@@ -17,8 +17,8 @@ Envoie de message "Food" - Done
 
 Si 5 ou + food --> Message engineer : "Build turret"
 
-#### Explorer ennelmy base
-Envoie d'un message aux rocket launcher si base ennemi
+#### Explorer ennemy base
+Envoie d'un message aux rocket launcher + heavy si base ennemi
 
 
 ### Turret :
@@ -35,6 +35,17 @@ Réagir au message des explores pour construire les tourelles
 
 Recoit message de Explorer Ennemy Base --> Tire sur la base ennemi
 
+
+### Base
+
+message de ping pour compter les troupes à intervalle régulier.
+gestion du recrutement des troupes en fonctions des unités manquantes entre autres
+
+
+### Heavy + light
+
+protection des zones de nourriture à leur apparition.
+attaque des ennemis a proximité
 
 
 
