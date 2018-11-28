@@ -40,7 +40,9 @@ Recoit message de Explorer Ennemy Base --> Tire sur la base ennemi (utilisation 
 
 message de ping pour compter les troupes à intervalle régulier.
 
-gestion du recrutement des troupes en fonctions des unités manquantes entre autres
+gestion du recrutement des troupes en fonctions des unités manquantes entre autres --> unite low hp envoie un message "i m dead"
+
+Creation d 'une base si une base est attaque et ressources suffisantes
 
 
 ### Heavy + light
