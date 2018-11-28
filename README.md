@@ -6,6 +6,8 @@ Things to do :
 
 Sorted Percept - Done
 
+ClasseStatique : contenu des messages
+
 # Agents
 
 ### Explorer :
