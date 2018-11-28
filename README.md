@@ -16,6 +16,7 @@ Cycle recupération/Base etc - Done
 Envoie de message "Food" - Done
 
 Si 5 ou + food --> Message engineer : "Build turret"
+use this.getAveragePositionOfUnitPercept()
 
 #### Explorer ennemy base
 Envoie d'un message aux rocket launcher + heavy si base ennemi
