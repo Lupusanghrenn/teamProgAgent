@@ -33,7 +33,7 @@ Réagir au message des explores pour construire les tourelles
 
 ### Rocket Launcher
 
-Recoit message de Explorer Ennemy Base --> Tire sur la base ennemi
+Recoit message de Explorer Ennemy Base --> Tire sur la base ennemi (utilisation de trigo)
 
 
 ### Base
