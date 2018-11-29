@@ -95,6 +95,17 @@ public abstract class WarExplorerBrainController extends WarExplorerBrain {
 	static WTask getFoodTask = new WTask(){
 		String exec(WarBrain bc){
 			WarExplorerBrainController me = (WarExplorerBrainController) bc;
+			if(me.target.equals("start")){
+				me.target="none";
+				double random = Math.random();
+				if(random<=0.5){
+					me.setHeading(0);
+				}else{
+					me.setHeading(180);
+				}
+				
+			}
+			
 			if(me.isBagFull()){
 				me.ctask = returnFoodTask;
 				return(null);
@@ -110,13 +121,17 @@ public abstract class WarExplorerBrainController extends WarExplorerBrain {
 			
 			//Si il y a de la nouriture
 			if(foodPercept != null){
-				me.broadcastMessageToAgentType(WarAgentType.WarExplorer, "FoundFood", String.valueOf(foodPercept.getAngle()),String.valueOf(foodPercept.getDistance()));
+				me.broadcastMessageToAgentType(WarAgentType.WarExplorer, ContenuMessage.FoundFood.toString(), String.valueOf(foodPercept.getAngle()),String.valueOf(foodPercept.getDistance()));
 				if(foodPercept.getDistance() > WarResource.MAX_DISTANCE_TAKE){
 					me.setHeading(foodPercept.getAngle());
 					return(WarExplorer.ACTION_MOVE);
 				}else{
 					return(WarExplorer.ACTION_TAKE);
 				}
+			}else if(me.getNbElementsInBag()>2) {
+				//food percept ==null, retour a la base
+				me.ctask = returnFoodTask;
+				return(WarExplorer.ACTION_MOVE);
 			}
 			//gestion messageFood
 			WarMessage m = me.getMessageAboutFood();
@@ -126,14 +141,50 @@ public abstract class WarExplorerBrainController extends WarExplorerBrain {
 			return(WarExplorer.ACTION_MOVE);
 		}
 	};
+	
+	static WTask searchEnnemyBase = new WTask(){
+		String exec(WarBrain bc){
+			WarExplorerBrainController me = (WarExplorerBrainController) bc;
+			if(me.target.equals("none")) {
+				//Attente des messages
+				WarMessage m = me.getMessageAboutFood();
+				if(m!=null){
+					me.setHeading(m.getAngle());
+					me.target="searching";
+				}
+				return WarExplorer.ACTION_IDLE;//or move just in case ?
+			}else if(me.target.equals("searching")) {
+				//recherche d ennemi
+				Sorted_Percepts sp = new Sorted_Percepts(me.getPercepts(),me.getTeamName());
+				WarAgentPercept p = sp.getClosestBaseThenEnnemi();
+				
+				if(me.isBlocked())
+					me.setRandomHeading();
+				
+				if(p!=null) {
+					me.setHeading(p.getAngle());
+					me.broadcastMessageToAgentType(WarAgentType.WarEngineer, ContenuMessage.EnnemyBaseFound.toString(), String.valueOf(p.getAngle()),String.valueOf(p.getAngle()));
+					me.broadcastMessageToAgentType(WarAgentType.WarRocketLauncher, ContenuMessage.EnnemyBaseFound.toString(), String.valueOf(p.getAngle()),String.valueOf(p.getAngle()));
+					//gerer autre envoi de message
+					return WarExplorer.ACTION_MOVE;
+				}
+				
+				return WarExplorer.ACTION_MOVE;
+				
+			}
+			
+			return "";
+			
+		}
+	};
 
 	
 	
 	public WarExplorerBrainController() {
 		super();
 		ctask = getFoodTask; // initialisation de la FSM
-		target="none";
-		//Sorted_Percepts sp=new Sorted_Percepts(this.getPercepts(),this.getTeamName());
+		target="start";
+		//si role = war explorer --> target="none"
 	}
 
     
@@ -141,7 +192,7 @@ public abstract class WarExplorerBrainController extends WarExplorerBrain {
 	
 	private WarMessage getMessageAboutFood() {
 		for (WarMessage m : getMessages()) {
-			if(m.getMessage().equals("FoundFood"))
+			if(m.getMessage().equals(ContenuMessage.WhereIsBase.toString()))
 				return m;
 		}
 		return null;
@@ -153,7 +204,7 @@ public abstract class WarExplorerBrainController extends WarExplorerBrain {
 				return m;
 		}
 		
-		broadcastMessageToAgentType(WarAgentType.WarBase, "Where is the base", "");
+		broadcastMessageToAgentType(WarAgentType.WarBase, ContenuMessage.WhereIsBase.toString(), "");
 		return null;
 	}
 

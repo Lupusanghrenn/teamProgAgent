@@ -41,7 +41,7 @@ public abstract class WarBaseBrainController extends WarBaseBrain {
         List<WarMessage> messages = getMessages();
 
         for (WarMessage message : messages) {
-            if (message.getMessage().equals("Where is the base"))
+            if (message.getMessage().equals(ContenuMessage.WhereIsBase.toString()))
                 reply(message, "I'm here");
         }
 
@@ -54,7 +54,7 @@ public abstract class WarBaseBrainController extends WarBaseBrain {
 
         for (WarAgentPercept percept : getPerceptsResources()) {
             if (percept.getType().equals(WarAgentType.WarFood))
-                broadcastMessageToAgentType(WarAgentType.WarExplorer, "I detected food",
+                broadcastMessageToAgentType(WarAgentType.WarExplorer, ContenuMessage.FoundFood.toString(),
                         String.valueOf(percept.getAngle()),
                         String.valueOf(percept.getDistance()));
         }

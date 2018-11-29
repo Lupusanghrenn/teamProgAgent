@@ -21,7 +21,7 @@ public abstract class WarKamikazeBrainController extends WarKamikazeBrain {
             switch (p.getType()) {
                 case WarBase:
                     if (isEnemy(p)) {
-                        broadcastMessageToAll("Ennemi Base Found", String.valueOf(p.getAngle()), String.valueOf(p.getDistance()));
+                        broadcastMessageToAll(ContenuMessage.EnnemyBaseFound.toString(), String.valueOf(p.getAngle()), String.valueOf(p.getDistance()));
                     }
                     break;
                 default:
