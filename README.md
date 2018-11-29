@@ -6,27 +6,28 @@ Things to do :
 
 Sorted Percept - Done
 
-ClasseStatique : contenu des messages
+ClasseStatique : contenu des messages - Done
 
 # Agents
-
+Lors de la création d un agent hors explorer food --> give food pour heal ou contru (max bag ou 50% ou 1 ?)
 ### Explorer :
 
 #### Explorer food
 FSM - Done
 Cycle recupération/Base etc - Done
 Envoie de message "Food" - Done
+si 3 food in bag et plus de percept --> retour a la base - Done
 
 Si 5 ou + food --> Message engineer : "Build turret"
 use this.getAveragePositionOfUnitPercept()
 
 #### Explorer ennemy base
-Envoie d'un message aux rocket launcher + heavy si base ennemi
+Envoie d'un message aux rocket launcher + heavy si base ennemi - Done
 
 
 ### Turret :
 
-Système d'anticipation des tirs (raven)
+Système d'anticipation des tirs (raven) -- Améliorer le ratio
 
 
 ### Engineer :
@@ -37,6 +38,7 @@ Réagir au message des explores pour construire les tourelles
 ### Rocket Launcher
 
 Recoit message de Explorer Ennemy Base --> Tire sur la base ennemi (utilisation de trigo)
+this.getTargetedAgentPosition()
 
 
 ### Base
