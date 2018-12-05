@@ -27,7 +27,7 @@ Envoie d'un message aux rocket launcher + heavy si base ennemi - Done
 
 ### Turret :
 
-Système d'anticipation des tirs (raven) -- Améliorer le ratio
+Système d'anticipation des tirs (raven) -- Done
 
 
 ### Engineer :
@@ -48,6 +48,8 @@ message de ping pour compter les troupes à intervalle régulier.
 gestion du recrutement des troupes en fonctions des unités manquantes entre autres --> unite low hp envoie un message "i m dead"
 
 Creation d 'une base si une base est attaque et ressources suffisantes
+
+Lors d'une attaque, triangulaion pour envoyer des heavy vers la sources de roquettes
 
 
 ### Heavy + light
