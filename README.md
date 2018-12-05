@@ -30,6 +30,7 @@ Envoie d'un message aux rocket launcher + heavy si base ennemi - Done
 ### Turret :
 
 Système d'anticipation des tirs (raven) -- Done
+Si target tres proche, desactivation de l'anticipation
 
 
 ### Engineer :
