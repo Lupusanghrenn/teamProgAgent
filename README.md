@@ -12,6 +12,8 @@ ClasseStatique : contenu des messages - Done
 Lors de la création d un agent hors explorer food --> give food pour heal ou contru (max bag ou 50% ou 1 ?)
 ### Explorer :
 
+Si moins ou egal a 50hp --> envoie message a la base (going to die)
+
 #### Explorer food
 FSM - Done
 Cycle recupération/Base etc - Done
